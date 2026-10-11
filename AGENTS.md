@@ -24,7 +24,9 @@ Grafana Docker image with plugins installed at build time, published as `dockett
 - A Grafana bump touches four places: the `ARG` default, `GRAFANA_VERSION` and
   `DOCKER_TAG` in the `Makefile`, the `tag` matrix in `.github/workflows/docker.yml`,
   and the tables in `README.md`.
-- A plugin change touches the `Dockerfile`, `PLUGINS` in `tests/smoke.sh` and the
-  plugin table in `README.md`.
+- A plugin change touches `GRAFANA_PLUGINS` in the `Dockerfile` and the plugin table
+  in `README.md`. `tests/smoke.sh` checks every plugin in the image.
+- Do not delete files from an installed plugin. Grafana rejects the plugin
+  (`signatureModified`).
 - CI builds every branch. Only master is pushed to Docker Hub.
 - Run `make build test test-docker` before you commit.

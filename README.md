@@ -25,9 +25,28 @@ This image installs the plugins at build time. Each plugin has a pinned version.
 
 | Plugin | Version |
 |--------|---------|
+| [alexanderzobnin-zabbix-app](https://grafana.com/grafana/plugins/alexanderzobnin-zabbix-app/) | 6.9.1 |
+| [briangann-datatable-panel](https://grafana.com/grafana/plugins/briangann-datatable-panel/) | 2.0.2 |
+| [briangann-gauge-panel](https://grafana.com/grafana/plugins/briangann-gauge-panel/) | 2.2.0 |
+| [camptocamp-prometheus-alertmanager-datasource](https://grafana.com/grafana/plugins/camptocamp-prometheus-alertmanager-datasource/) | 2.3.1 |
+| [grafana-clickhouse-datasource](https://grafana.com/grafana/plugins/grafana-clickhouse-datasource/) | 4.22.1 |
+| [grafana-clock-panel](https://grafana.com/grafana/plugins/grafana-clock-panel/) | 3.2.4 |
+| [grafana-exploretraces-app](https://grafana.com/grafana/plugins/grafana-exploretraces-app/) | 2.2.1 |
+| [grafana-lokiexplore-app](https://grafana.com/grafana/plugins/grafana-lokiexplore-app/) | 3.0.0 |
+| [grafana-metricsdrilldown-app](https://grafana.com/grafana/plugins/grafana-metricsdrilldown-app/) | 3.0.0 |
+| [grafana-polystat-panel](https://grafana.com/grafana/plugins/grafana-polystat-panel/) | 2.1.16 |
+| [grafana-pyroscope-app](https://grafana.com/grafana/plugins/grafana-pyroscope-app/) | 2.3.1 |
+| [jdbranham-diagram-panel](https://grafana.com/grafana/plugins/jdbranham-diagram-panel/) | 1.10.4 |
+| [marcusolsson-csv-datasource](https://grafana.com/grafana/plugins/marcusolsson-csv-datasource/) | 1.0.3 |
+| [marcusolsson-json-datasource](https://grafana.com/grafana/plugins/marcusolsson-json-datasource/) | 1.4.3 |
 | [marcusolsson-static-datasource](https://grafana.com/grafana/plugins/marcusolsson-static-datasource/) | 6.1.1 |
 | [marcusolsson-treemap-panel](https://grafana.com/grafana/plugins/marcusolsson-treemap-panel/) | 2.1.1 |
+| [redis-datasource](https://grafana.com/grafana/plugins/redis-datasource/) | 2.2.0 |
+| [simpod-json-datasource](https://grafana.com/grafana/plugins/simpod-json-datasource/) | 0.6.7 |
+| [vertamedia-clickhouse-datasource](https://grafana.com/grafana/plugins/vertamedia-clickhouse-datasource/) | 3.5.0 |
 | [victoriametrics-logs-datasource](https://grafana.com/grafana/plugins/victoriametrics-logs-datasource/) | 0.32.0 |
+| [vonage-status-panel](https://grafana.com/grafana/plugins/vonage-status-panel/) | 2.0.4 |
+| [yesoreyeram-infinity-datasource](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/) | 4.1.1 |
 
 The image also sets:
 

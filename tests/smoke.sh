@@ -5,7 +5,6 @@ set -eu
 IMAGE="${IMAGE:-dockette/grafana:latest}"
 NAME="${NAME:-grafana-smoke}"
 TIMEOUT="${TIMEOUT:-90}"
-PLUGINS="marcusolsson-static-datasource marcusolsson-treemap-panel victoriametrics-logs-datasource"
 
 cleanup() {
     docker rm -f "$NAME" > /dev/null 2>&1 || true
@@ -33,6 +32,7 @@ until api /api/health > /dev/null 2>&1; do
     sleep 1
 done
 
+PLUGINS=$(docker exec "$NAME" ls /opt/grafana/plugins)
 for p in $PLUGINS; do
     echo "> plugin ${p}"
     api "/api/plugins/${p}/settings" | grep -q "\"id\":\"${p}\"" \
