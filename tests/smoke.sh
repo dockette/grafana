@@ -14,7 +14,7 @@ trap cleanup EXIT INT TERM
 
 cleanup
 
-echo "> start ${IMAGE} without network"
+echo "> start ${IMAGE}"
 docker run -d --name "$NAME" --network none "$IMAGE" > /dev/null
 
 api() {

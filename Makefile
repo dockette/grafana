@@ -33,7 +33,7 @@ shell:
 test:
 	docker run --rm --entrypoint grafana ${DOCKER_IMAGE}:${DOCKER_TAG} cli --pluginsDir /opt/grafana/plugins plugins ls
 
-# Start the image without network and check that every plugin loads
+# Start the image and check that every plugin loads
 .PHONY: test-docker
 test-docker:
 	IMAGE=${DOCKER_IMAGE}:${DOCKER_TAG} ./tests/smoke.sh

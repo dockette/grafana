@@ -1,7 +1,7 @@
 <h1 align=center>Dockette / Grafana</h1>
 
 <p align=center>
-   <a href="https://grafana.com/oss/grafana/">Grafana</a> with plugins installed into the image. Works without internet access.
+   <a href="https://grafana.com/oss/grafana/">Grafana</a> with plugins installed into the image.
 </p>
 
 <p align=center>
@@ -19,7 +19,7 @@
 
 ## What it is
 
-The upstream `grafana/grafana` image downloads plugins from grafana.com when it starts (`GF_PLUGINS_PREINSTALL`). On a network without internet access, the download fails and the panels that use the plugins break.
+The upstream `grafana/grafana` image downloads plugins from grafana.com when it starts (`GF_PLUGINS_PREINSTALL`).
 
 This image installs the plugins at build time. Each plugin has a pinned version.
 
@@ -57,7 +57,7 @@ Do not set `GF_PATHS_PLUGINS` to a different path. If you do, Grafana does not f
 ```sh
 make build        # build the image
 make test         # list the installed plugins
-make test-docker  # start the image without network, check that the plugins load
+make test-docker  # start the image, check that the plugins load
 ```
 
 -----

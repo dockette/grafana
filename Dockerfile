@@ -16,7 +16,7 @@ RUN mkdir -p ${GF_PATHS_PLUGINS} && \
     chown -R grafana:root ${GF_PATHS_PLUGINS}
 USER grafana
 
-# OFFLINE ######################################################################
+# DEFAULTS #####################################################################
 ENV GF_ANALYTICS_REPORTING_ENABLED=false
 ENV GF_ANALYTICS_CHECK_FOR_UPDATES=false
 ENV GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES=false

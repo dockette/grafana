@@ -13,7 +13,7 @@ Grafana Docker image with plugins installed at build time, published as `dockett
 
 ## Conventions
 
-- The image works without internet access. Do not add anything that downloads at start.
+- Install every plugin at build time. Do not add anything that downloads at start.
 - Plugins go into `/opt/grafana/plugins` (`GF_PATHS_PLUGINS`), not `/var/lib/grafana`,
   because users mount a volume on `/var/lib/grafana`.
 - Pin every plugin version in the `Dockerfile`.
