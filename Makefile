@@ -1,6 +1,7 @@
 DOCKER_IMAGE=dockette/grafana
 DOCKER_TAG?=13.2.3
 DOCKER_PLATFORMS?=linux/amd64,linux/arm64
+VERSION:=$(shell cat VERSION)
 
 GRAFANA_VERSION?=13.2.3
 GRAFANA_PORT?=13000
@@ -37,3 +38,13 @@ test:
 .PHONY: test-docker
 test-docker:
 	IMAGE=${DOCKER_IMAGE}:${DOCKER_TAG} ./tests/smoke.sh
+
+.PHONY: version
+version:
+	@echo ${VERSION}
+
+.PHONY: release
+release:
+	@date -u +%Y.%m.%d > VERSION
+	@echo "VERSION: ${VERSION} -> $$(cat VERSION)"
+	@echo "next: git commit -am \"Release: $$(cat VERSION)\" && git push"

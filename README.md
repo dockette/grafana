@@ -71,12 +71,17 @@ Do not set `GF_PATHS_PLUGINS` to a different path. If you do, Grafana does not f
 | `dockette/grafana:13.2.3` | `grafana/grafana:13.2.3` |
 | `dockette/grafana:latest` | same as `13.2.3` |
 
+The release version is the date in [`VERSION`](VERSION). CI pushes `latest` also as `dockette/grafana:<VERSION>`.
+To release, run `make release`, commit and push to `master`.
+
 ## Development
 
 ```sh
 make build        # build the image
 make test         # list the installed plugins
 make test-docker  # start the image, check that the plugins load
+make version      # print VERSION
+make release      # set VERSION to today's date
 ```
 
 -----

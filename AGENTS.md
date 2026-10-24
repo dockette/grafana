@@ -28,5 +28,7 @@ Grafana Docker image with plugins installed at build time, published as `dockett
   in `README.md`. `tests/smoke.sh` checks every plugin in the image.
 - Do not delete files from an installed plugin. Grafana rejects the plugin
   (`signatureModified`).
+- `VERSION` is the release date; `make release` bumps it. CI pushes `latest`
+  also as `<VERSION>` and creates the GitHub release.
 - CI builds every branch. Only master is pushed to Docker Hub.
 - Run `make build test test-docker` before you commit.
