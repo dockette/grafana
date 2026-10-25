@@ -21,9 +21,8 @@ Grafana Docker image with plugins installed at build time, published as `dockett
 - The upstream version is pinned in `ARG GRAFANA_VERSION` in the `Dockerfile`.
   The default value must build correctly without any `--build-arg`, because the
   shared workflow in `dockette/.github` cannot pass build arguments.
-- A Grafana bump touches four places: the `ARG` default, `GRAFANA_VERSION` and
-  `DOCKER_TAG` in the `Makefile`, the `tag` matrix in `.github/workflows/docker.yml`,
-  and the tables in `README.md`.
+- A Grafana bump touches the `ARG` default, `GRAFANA_VERSION` and `DOCKER_TAG` in
+  the `Makefile`, and the tables in `README.md`. CI reads the tag from the `ARG`.
 - A plugin change touches `GRAFANA_PLUGINS` in the `Dockerfile` and the plugin table
   in `README.md`. `tests/smoke.sh` checks every plugin in the image.
 - Do not delete files from an installed plugin. Grafana rejects the plugin

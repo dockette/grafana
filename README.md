@@ -66,13 +66,17 @@ Do not set `GF_PATHS_PLUGINS` to a different path. If you do, Grafana does not f
 
 ## Versions
 
-| Image tag | Upstream |
-|-----------|----------|
-| `dockette/grafana:13.2.3` | `grafana/grafana:13.2.3` |
-| `dockette/grafana:latest` | same as `13.2.3` |
+The release version is the date in [`VERSION`](VERSION). The Grafana version is pinned in the `Dockerfile`
+(`GRAFANA_VERSION`). On `master`, CI pushes the image under four tags:
 
-The release version is the date in [`VERSION`](VERSION). CI pushes `latest` also as `dockette/grafana:<VERSION>`.
-To release, run `make release`, commit and push to `master`.
+| Tag | What it is |
+|-----|------------|
+| `dockette/grafana:latest` | latest build of `master` |
+| `dockette/grafana:2026.10.23` | release `2026.10.23` |
+| `dockette/grafana:13.2.3` | latest build with Grafana `13.2.3` |
+| `dockette/grafana:13.2.3-2026.10.23` | Grafana `13.2.3` in release `2026.10.23`; pin this one |
+
+To release, run `make release`, commit and push to `master`. An upstream upgrade is a release too.
 
 ## Development
 
