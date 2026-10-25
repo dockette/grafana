@@ -17,11 +17,16 @@
 
 -----
 
-## What it is
+The upstream `grafana/grafana` image downloads plugins from grafana.com when it starts (`GF_PLUGINS_PREINSTALL`). This
+image installs them at build time. Each plugin has a pinned version.
 
-The upstream `grafana/grafana` image downloads plugins from grafana.com when it starts (`GF_PLUGINS_PREINSTALL`).
+## Features
 
-This image installs the plugins at build time. Each plugin has a pinned version.
+- Grafana `13.2.3` on the upstream `grafana/grafana` image
+- 22 plugins installed at build time, see the table below
+- `GF_PATHS_PLUGINS=/opt/grafana/plugins`: the plugins stay available when you mount a volume on `/var/lib/grafana`
+- `GF_PLUGINS_PREINSTALL_DISABLED=true`: no plugin downloads at start
+- Update checks, usage reporting and the news feed are off
 
 | Plugin | Version |
 |--------|---------|
@@ -48,39 +53,43 @@ This image installs the plugins at build time. Each plugin has a pinned version.
 | [vonage-status-panel](https://grafana.com/grafana/plugins/vonage-status-panel/) | 2.0.4 |
 | [yesoreyeram-infinity-datasource](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/) | 4.1.1 |
 
-The image also sets:
-
-- `GF_PATHS_PLUGINS=/opt/grafana/plugins` — the plugins stay available when you mount a volume on `/var/lib/grafana`.
-- `GF_PLUGINS_PREINSTALL_DISABLED=true` — no plugin downloads at start.
-- Update checks, usage reporting and the news feed are off.
-
 ## Usage
 
 ```sh
 docker run -d --name grafana -p 3000:3000 dockette/grafana:13.2.3
+
+# Open http://localhost:3000 and log in as admin / admin
 ```
 
-Then open `http://localhost:3000` (`admin` / `admin`).
+## Configuration
 
 Do not set `GF_PATHS_PLUGINS` to a different path. If you do, Grafana does not find the plugins.
 
 ## Versions
 
-| Image tag | Upstream |
-|-----------|----------|
-| `dockette/grafana:13.2.3` | `grafana/grafana:13.2.3` |
-| `dockette/grafana:latest` | same as `13.2.3` |
+| Version | Release |
+|---------|---------|
+| `dockette/grafana:13.2.3-YYYY.MM.DD` | release `YYYY.MM.DD` |
+| `dockette/grafana:13.2.3` | latest release |
+| `dockette/grafana:YYYY.MM.DD` | release `YYYY.MM.DD` |
+| `dockette/grafana:latest` | latest build of `master` |
+
+All versions build on `grafana/grafana:13.2.3`. Releases are listed on [GitHub](https://github.com/dockette/grafana/releases).
 
 ## Development
 
 ```sh
-make build        # build the image
-make test         # list the installed plugins
-make test-docker  # start the image, check that the plugins load
+make build          # build the image
+make test           # list the installed plugins
+make test-docker    # start the image, check that the plugins load
+make run            # run Grafana on port 13000
+make shell          # open a shell in the image
+make push           # build and push linux/amd64 and linux/arm64
+make version        # print VERSION
+make release        # set today's date in VERSION
 ```
-
------
 
 ## Maintenance
 
-See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
+See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to
+[support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
