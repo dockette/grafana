@@ -1,8 +1,8 @@
 DOCKER_IMAGE=dockette/grafana
-DOCKER_TAG?=13.2.3
+DOCKER_TAG?=${GRAFANA_VERSION}
 DOCKER_PLATFORMS?=linux/amd64,linux/arm64
+include VERSION
 
-GRAFANA_VERSION?=13.2.3
 GRAFANA_PORT?=13000
 
 .PHONY: build
@@ -37,3 +37,12 @@ test:
 .PHONY: test-docker
 test-docker:
 	IMAGE=${DOCKER_IMAGE}:${DOCKER_TAG} ./tests/smoke.sh
+
+.PHONY: version
+version:
+	@echo ${VERSION}
+
+.PHONY: release
+release:
+	@sed -i.bak "s/^VERSION=.*/VERSION=$$(date -u +%Y.%m.%d)/" VERSION && rm VERSION.bak
+	@cat VERSION
